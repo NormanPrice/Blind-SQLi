@@ -61,7 +61,7 @@ W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwi
   <summary>Pierwsza podpowiedź</summary>
   <ol>
     <li>
-       W tym zadaniu napewno będziesz potrzebował Burp Intruder
+       W tym zadaniu napewno będziesz potrzebował Burp Intruder, i należy dopisać zapytanie sql w tym samym miesjcu co w poprzednim zadaniu 
     </li>
   </ol>
 </details>
@@ -70,7 +70,7 @@ W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwi
   <summary>Druga podpowiedź</summary>
   <ol>
     <li>
-     W którymś miejscu żądania trzeba będzie dopisać pg_sleep(czas opóźnienia) 
+    To zapytanie może być przydatne ' %3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,(numer litery),1)='a')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users-- 
     </li>
   </ol>
 </details>
@@ -80,8 +80,22 @@ W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwi
   <ol>
     <li> Z włączonym w tle Burpem wejdź na stronę sklepu  </li>
     <li> Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
-    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>’ ||pg_sleep(10)--</b>; session=jakaś_zawrtość” </li>
-    <li> Wyślij żądanie i poczekaj 10 s </li>
+    <li> Najpierw sprawdźmy czy użytkownik "administrator" istnieje wklejając poniższą linijkę w tą samo mijesce co w poprzednim zadaniu
+      <br/>
+    ' %3BSELECT+CASE+WHEN+(username='administrator')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--</li>
+    <li>Jeśli storna odpowiada po dłuższym czasie (10s) znaczy to że użytkownik istnieje </li>
+    <li>Wyślij zapytanie, nad którym pracujesz, do Burp Intrudera</li>
+    <li>W zakładce Positions programu Burp Intruder wyczyść domyślne pozycje klikając na przycisk "Clear §".</li>
+    <li>Zmień wartość cookie na: TrackingId=x'%3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,1,1)='a')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--
+    </br>
+      Wykorzystuje to funkcję SUBSTRING() do wyodrębnienia pojedynczego znaku z hasła i przetestowania go względem określonej wartości. Nasz atak będzie cyklicznie przechodził przez każdą pozycję i możliwą wartość, testując każdą z nich po kolei.
+    <li>Umieść znacznik "Add §"  wokół znaku a w wartości cookie.</li>
+    <li>Przejdź do zakładki Payloads, sprawdź czy wybrana jest opcja "Simple list", a następnie w zakładce "Payload Options" dodaj znaki z pliku do którego link znajduję się w tym zadaniu</li>
+    <li>Aby móc stwierdzić, kiedy właściwy znak został wysłany, będziesz musiał monitorować czas potrzebny aplikacji na odpowiedź na każde żądanie. Aby proces ten był jak najbardziej niezawodny, musisz skonfigurować atak Intrudera tak, aby wysyłał żądania w pojedynczym wątku. Aby to zrobić, przejdź do zakładki "Resource Pool i dodaj atak do puli zasobów(na dole strony) z ustawionym parametrem "Maximum concurrent requests" na 1.</li>
+    <li>Rozpocznij atak obserwując wyraźnie zauważalne opóźnienie w przypadku jedego zanku - zanotuj go </li>
+    <li>Po zakończeniu pierwszej rundy przejdź do zakładni Positions i zmień argument funkcji "Subsrting" z 1 na 2 SUBSTRING(password,<b>2</b>,1)</li>
+    <li>Postępuj anologicznie inkrementując wartość do 20</li>
+  <li>Zaloguj się na konto administratora używając loginu <b>administrator</b> i hasła które już znasz</li>
   </ol>
 </details>
 <br/>
