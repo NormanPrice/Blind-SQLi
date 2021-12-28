@@ -51,7 +51,7 @@ Zarówno nazwa użytkownika jak i hasło znajdują się na poniższych listach:
 
 Witryna daje *zdecydowanie za dużo informacji* użytkownikom i atakującemu.
 - [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval)
-- [Podpowiedzi](https://github.com/LittleBigKiller/bawim-auth/blob/master/Lab1-Hints.md#lab-11---username-enumeration-przez-r%C3%B3%C5%BCne-odpowiedzi)
+- [Lista znaków występujących w haśle](https://github.com/NormanPrice/Blind-SQLi/blob/main/litery)
 
 <br/>
 
