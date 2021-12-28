@@ -89,9 +89,9 @@ W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwi
     <li>Zmień wartość cookie na: TrackingId=x'%3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,1,1)='a')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--
     </br>
       Wykorzystuje to funkcję SUBSTRING() do wyodrębnienia pojedynczego znaku z hasła i przetestowania go względem określonej wartości. Nasz atak będzie cyklicznie przechodził przez każdą pozycję i możliwą wartość, testując każdą z nich po kolei.
-    <li>Umieść znacznik "Add §"  wokół znaku a w wartości cookie.</li>
+    <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie.</li>
     <li>Przejdź do zakładki Payloads, sprawdź czy wybrana jest opcja "Simple list", a następnie w zakładce "Payload Options" dodaj znaki z pliku do którego link znajduję się w tym zadaniu</li>
-    <li>Aby móc stwierdzić, kiedy właściwy znak został wysłany, będziesz musiał monitorować czas potrzebny aplikacji na odpowiedź na każde żądanie. Aby proces ten był jak najbardziej niezawodny, musisz skonfigurować atak Intrudera tak, aby wysyłał żądania w pojedynczym wątku. Aby to zrobić, przejdź do zakładki "Resource Pool i dodaj atak do puli zasobów(na dole strony) z ustawionym parametrem "Maximum concurrent requests" na 1.</li>
+    <li>Aby móc stwierdzić, kiedy właściwy znak został wysłany, będziesz musiał monitorować czas potrzebny aplikacji na odpowiedź na każde żądanie. Aby proces ten był jak najbardziej niezawodny, musisz skonfigurować atak Intrudera tak, aby wysyłał żądania w pojedynczym wątku. Aby to zrobić, przejdź do zakładki Resource Pool i dodaj atak do puli zasobów (na dole strony) z ustawionym parametrem "Maximum concurrent requests" na 1.</li>
     <li>Rozpocznij atak obserwując wyraźnie zauważalne opóźnienie w przypadku jedego zanku - zanotuj go </li>
     <li>Po zakończeniu pierwszej rundy przejdź do zakładni Positions i zmień argument funkcji "Subsrting" z 1 na 2 SUBSTRING(password,<b>2</b>,1)</li>
     <li>Postępuj anologicznie inkrementując wartość do 20</li>
