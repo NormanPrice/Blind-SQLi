@@ -38,7 +38,7 @@ Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowe
   <ol>
     <li> Z włączonym w tle Burpem wejdź na stronę sklepu  </li>
     <li> Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
-    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość**’ ||pg_sleep(10)--**; session=jakaś_zawrtość” </li>
+    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>’ ||pg_sleep(10)--</b>; session=jakaś_zawrtość” </li>
     <li> Wyślij żądanie i poczekaj 10 s </li>
   </ol>
 </details>
