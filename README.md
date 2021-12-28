@@ -44,10 +44,18 @@ Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowe
   </ol>
 </details>
 <br/>
-### Zadanie 1.2
-Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
-Jednak wyniki zapytania SQL nie są zwracane, a także aplikacja zachowuje się cały czas tak samo- niezależnie od tego co dane zapytanie SQL zwraca. Możliwe jest jednak spowodowanie opóźnienia, dzięki któremu można wnioskować pewne informacje.
-Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowego opóźnienia.
+### Lab 1.1 - Username enumeration przez różne odpowiedzi
+Zadanie - Skutecznie stwierdzić, które konto użytkownika istnieje i złamać jego hasło, a następnie wejść na podstronę konta.
+To laboratorium jest podatne na `username enumeration` i atak `brute-force` na hasła.
+Zarówno nazwa użytkownika jak i hasło znajdują się na poniższych listach:
+- [Lista użytkowników](https://portswigger.net/web-security/authentication/auth-lab-usernames)
+- [Lista haseł](https://portswigger.net/web-security/authentication/auth-lab-passwords)
+
+Witryna daje *zdecydowanie za dużo informacji* użytkownikom i atakującemu.
+- [Laboratorium](https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-different-responses)
+- [Podpowiedzi](https://github.com/LittleBigKiller/bawim-auth/blob/master/Lab1-Hints.md#lab-11---username-enumeration-przez-r%C3%B3%C5%BCne-odpowiedzi)
+
+<br/>
 - [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval)
 <br/>
 
