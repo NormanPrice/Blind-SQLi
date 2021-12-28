@@ -26,3 +26,11 @@ Zadanie polega na wykorzystaniu podatności SQLi w celu spodowania DNS lookup dl
 - [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band)
 
 <br/>
+
+## Zadanie 3 - Blind SQL injection with conditional responses
+Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
+Rezultat zapytania nie jest zwracany, komunikaty błędu również nie są wyświetlane. Aplikacja zawiera jednak wiadomość "Welcome back", jeżeli zapytanie zwraca jakiś wiersz tabeli.
+Baza danych zawiera tabelę *users*, z kolumnami *nazwa użytkownika* oraz *hasło*. Zadanie polega na ustaleniu hasła do administratora.
+
+- [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses)
+
