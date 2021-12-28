@@ -49,11 +49,42 @@ Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowe
 <br/>
 Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
 Jednak wyniki zapytania SQL nie są zwracane, a także aplikacja zachowuje się cały czas tak samo- niezależnie od tego co dane zapytanie SQL zwraca. Możliwe jest jednak spowodowanie opóźnienia, dzięki któremu można wnioskować pewne informacje.
-Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowego opóźnienia.
+Baza danych zawiera tabelę o nazwie <b>users</b>, z kolumnami o nazwach <b>username</b> i <b>password</b>. 
+<br/>
+W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwienia zadania jego hasło zawiera 20 znaków
+<br/>
+<br/>
 
-Witryna daje *zdecydowanie za dużo informacji* użytkownikom i atakującemu.
 - [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval)
 - [Lista znaków występujących w haśle](https://github.com/NormanPrice/Blind-SQLi/blob/main/litery)
+<details>
+  <summary>Pierwsza podpowiedź</summary>
+  <ol>
+    <li>
+       W tym zadaniu napewno będziesz potrzebował Burp Intruder
+    </li>
+  </ol>
+</details>
+
+<details>
+  <summary>Druga podpowiedź</summary>
+  <ol>
+    <li>
+     W którymś miejscu żądania trzeba będzie dopisać pg_sleep(czas opóźnienia) 
+    </li>
+  </ol>
+</details>
+
+<details>
+  <summary>Krok po kroku</summary>
+  <ol>
+    <li> Z włączonym w tle Burpem wejdź na stronę sklepu  </li>
+    <li> Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
+    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>’ ||pg_sleep(10)--</b>; session=jakaś_zawrtość” </li>
+    <li> Wyślij żądanie i poczekaj 10 s </li>
+  </ol>
+</details>
+<br/>
 
 <br/>
 
