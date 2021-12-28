@@ -45,7 +45,7 @@ Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowe
 
 <br/>
 
-## Zadanie 3 - Blind SQL injection with conditional responses
+## Zadanie 2 - Blind SQL injection with conditional responses
 Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
 Rezultat zapytania nie jest zwracany, komunikaty błędu również nie są wyświetlane. Aplikacja zawiera jednak wiadomość "Welcome back", jeżeli zapytanie zwraca jakiś wiersz tabeli.
 Baza danych zawiera tabelę *users*, z kolumnami *nazwa użytkownika* oraz *hasło*. Zadanie polega na ustaleniu hasła do administratora.
@@ -53,7 +53,7 @@ Baza danych zawiera tabelę *users*, z kolumnami *nazwa użytkownika* oraz *has�
 - [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses)
 <br/>
 
-## Zadanie 2 - Blind SQL injection with out-of-band interaction
+## Zadanie 3 - Blind SQL injection with out-of-band interaction
 Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
 Zapytanie SQL jest wykonywane asynchronicznie i nie wpływa na odpowiedź aplikacji. Jednak da się spowodować interakcję z zewnętrzną domeną.
 Zadanie polega na wykorzystaniu podatności SQLi w celu spodowania DNS lookup dla burpcollaborator.net.
