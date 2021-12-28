@@ -9,7 +9,8 @@ Przydatne mogą okazać się również [payload'y](https://portswigger.net/web-s
 
 ---
 
-## Zadanie 1 - Blind SQL injection with time delays
+## Blind SQL injection with time delays
+### Zadanie 1.1
 Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
 Jednak wyniki zapytania SQL nie są zwracane, a także aplikacja zachowuje się cały czas tak samo- niezależnie od tego co dane zapytanie SQL zwraca. Możliwe jest jednak spowodowanie opóźnienia, dzięki któremu można wnioskować pewne informacje.
 Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowego opóźnienia.
@@ -42,7 +43,9 @@ Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowe
     <li> Wyślij żądanie i poczekaj 10 s </li>
   </ol>
 </details>
-
+<br/>
+### Zadanie 1.1
+hgfdsasdfghnjmk,l.l,kmjnhgfghnjmk,l.;l,kmjnhbghnjmk,l.;lkjhbgv m,.kjhgv m,loikujhbn
 <br/>
 
 ## Zadanie 2 - Blind SQL injection with conditional responses
