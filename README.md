@@ -44,10 +44,11 @@ Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowe
   </ol>
 </details>
 <br/>
-### Zadanie 1.1
+### Zadanie 1.2
 Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
 Jednak wyniki zapytania SQL nie są zwracane, a także aplikacja zachowuje się cały czas tak samo- niezależnie od tego co dane zapytanie SQL zwraca. Możliwe jest jednak spowodowanie opóźnienia, dzięki któremu można wnioskować pewne informacje.
 Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowego opóźnienia.
+- [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval)
 <br/>
 
 ## Zadanie 2 - Blind SQL injection with conditional responses
