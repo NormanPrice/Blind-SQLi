@@ -8,12 +8,80 @@ Przydatne mogą okazać się również [payload'y](https://portswigger.net/web-s
 <br/><br/>
 
 ---
+## Blind SQL injection by triggering conditional responses
+### Zadanie 1.1
+Aplikacja wykorzystuje ciasteczko śledzące do celów analitycznych i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka.
+Wyniki zapytania SQL nie są zwracane, nie są też wyświetlane żadne komunikaty o błędach. Aplikacja zawiera jednak komunikat <b>"Welcome back"</b> na stronie, jeśli zapytanie zwróci jakiekolwiek wiersze.
+Baza danych zawiera tabelę o nazwie **users**, z kolumnami o nazwach **username** i **password**. 
+Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
+<br/>
+<br/>
+
+- [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses)
+- [Lista znaków występujących w haśle](https://github.com/NormanPrice/Blind-SQLi/blob/main/litery)
+<details>
+  <summary>Pierwsza podpowiedź</summary>
+  <ol>
+    <li>
+       W tym zadaniu napewno będziesz potrzebował Burp Intruder.
+    </li>
+  </ol>
+</details>
+
+<details>
+  <summary>Druga podpowiedź</summary>
+  <ol>
+    <li>
+      Na początek trzeba będzie zbadać długość hasła(użyj funkcji  LENGTH()), 
+    </li>
+    <li>
+      Znając długość hasła można badać badać kolejne litery hasła(użyj funkcji SUBSTRING()).
+    </li>
+  </ol>
+</details>
+
+<details>
+  <summary>Krok po kroku</summary>
+  <ol>
+    <li> Z włączonym w tle Burpem wejdź na stronę sklepu  </li>
+    <li> Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
+    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>' AND '1'='1</b>; session=jakaś_zawrtość” - sprawdź czy występuje jakiś komunikat </li>
+    <li>Zmodyfiikuj jedną "1" na dowolny inny znak - sprawdź czy strona reaguje prawidłowa</li>
+    <li>Wyślij zapytanie, nad którym pracujesz, do Burp Intrudera</li>
+    <li>W zakładce Positions programu Burp Intruder wyczyść domyślne pozycje klikając na przycisk "Clear §".</li>
+    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</b>; session=jakaś_zawrtość” </li>
+    <li>Umieść znacznik "Add §"  wokół znaku '1' w wartości cookie. </li>
+    <li>Przejdź do zakładki Payloads w polu Payload type wybierz Numbers</li>
+    <li>Poniżej w polu Payload Options wybierz zakres od 1 do 30 i krok 1</li>
+    <li>Następnie przejdź do zakładki Options i w polu Grep-Match naciśnij Clear, potem wpisz    <b>Welcome back</b> i kliknij Add </li>
+    <li>Rozpocznij atak - długość hasła to liczba przy której nie pojawi się już komunikat <b>Welcome back</b></li>
+    <li>Przejdź ponownie do zakładki Positions i zastąp wcześniej dodane zapytanie sql następującym <b>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='a</b></li>
+    <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie.</li>
+    <li><Przejdź do zakładki Payloads w polu Payload type wybierz Simple list</li>
+    <li>Poniżej w polu Payload Options dodaj plik do którego link umieszczony został w tym zadniu</li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+</details>
+
+<br/>
+
 
 ## Blind SQL injection with time delays
-### Zadanie 1.1
+### Zadanie 3.1
 Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
 Jednak wyniki zapytania SQL nie są zwracane, a także aplikacja zachowuje się cały czas tak samo- niezależnie od tego co dane zapytanie SQL zwraca. Możliwe jest jednak spowodowanie opóźnienia, dzięki któremu można wnioskować pewne informacje.
 Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowego opóźnienia.
+<br/>
+<br/>
 
 - [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays)
 <details>
@@ -45,7 +113,7 @@ Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowe
 </details>
 <br/>
 
-### Zadanie 1.2 
+### Zadanie 3.2 
 <br/>
 Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
 Jednak wyniki zapytania SQL nie są zwracane, a także aplikacja zachowuje się cały czas tak samo- niezależnie od tego co dane zapytanie SQL zwraca. Możliwe jest jednak spowodowanie opóźnienia, dzięki któremu można wnioskować pewne informacje.
