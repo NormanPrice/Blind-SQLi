@@ -78,7 +78,7 @@ Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawie
 Wyniki zapytania SQL nie są zwracane, aplikacja nie reaguje w żaden inny sposób w zależności od tego, czy zapytanie zwróci cokolwiek. Jeśli zapytanie SQL spowoduje błąd, wówczas aplikacja zwraca niestandardowy komunikat błędu.
 Baza danych zawiera tabelę o nazwie **users**, z kolumnami o nazwach **username** i **password**. 
 Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
-Długość hasła jest identyczna co w poprzednim zadaniu
+Długość hasła jest identyczna co w poprzednim zadaniu.
 <br/>
 <br/>
 
@@ -105,10 +105,20 @@ Długość hasła jest identyczna co w poprzednim zadaniu
 <details>
   <summary>Krok po kroku</summary>
   <ol>
-    <li> Z włączonym w tle Burpem wejdź na stronę sklepu  </li>
-    <li> Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
-    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>’ ||pg_sleep(10)--</b>; session=jakaś_zawrtość” </li>
+    <li>Z włączonym w tle Burpem wejdź na stronę sklepu </li>
+    <li>Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
+    <li></li>
     <li> Wyślij żądanie i poczekaj 10 s </li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
   </ol>
 </details>
 <br/>
