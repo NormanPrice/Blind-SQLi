@@ -76,7 +76,8 @@ Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
 ### Zadanie 2.1 
 Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
 Wyniki zapytania SQL nie są zwracane, aplikacja nie reaguje w żaden inny sposób w zależności od tego, czy zapytanie zwróci cokolwiek. Jeśli zapytanie SQL spowoduje błąd, wówczas aplikacja zwraca niestandardowy komunikat błędu.
-Baza danych zawiera tabelę *users*, z kolumnami *nazwa użytkownika* oraz *hasło*. Zadanie polega na ustaleniu hasła do administratora.
+Baza danych zawiera tabelę o nazwie **users**, z kolumnami o nazwach **username** i **password**. 
+Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
 Długość hasła jest identyczna co w poprzednim zadaniu
 <br/>
 <br/>
@@ -96,7 +97,7 @@ Długość hasła jest identyczna co w poprzednim zadaniu
   <summary>Druga podpowiedź</summary>
   <ol>
     <li>
-     Najpierw ustal z jakiej bazy danych korzysta aplikacja, a następnie skorzystaj z zapytania które pojawiło się na wykładzie
+     Najpierw ustal z jakiej bazy danych korzysta aplikacja, a następnie skorzystaj z zapytania które pojawiło się w prezentacji.
     </li>
   </ol>
 </details>
