@@ -8,7 +8,7 @@ Przydatne mogą okazać się również [payload'y](https://portswigger.net/web-s
 <br/><br/>
 
 ---
-## Blind SQL injection by triggering conditional responses
+## Blind SQL injection with conditional responses
 ### Zadanie 1.1
 Aplikacja wykorzystuje ciasteczko śledzące do celów analitycznych i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka.
 Wyniki zapytania SQL nie są zwracane, nie są też wyświetlane żadne komunikaty o błędach. Aplikacja zawiera jednak komunikat <b>"Welcome back"</b> na stronie, jeśli zapytanie zwróci jakiekolwiek wiersze.
@@ -68,9 +68,19 @@ Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
     <li>Jeśli masz już całe hasło zaloguj się na konto administratora używając loginu <b>administrator</b> i hasła które już posiadasz</li>
   </ol>
 </details>
-
 <br/>
 
+
+## Blind SQL injection with conditional errors
+### Zadanie 2.1 
+Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
+Rezultat zapytania nie jest zwracany, komunikaty błędu również nie są wyświetlane. Aplikacja zawiera jednak wiadomość "Welcome back", jeżeli zapytanie zwraca jakiś wiersz tabeli.
+Baza danych zawiera tabelę *users*, z kolumnami *nazwa użytkownika* oraz *hasło*. Zadanie polega na ustaleniu hasła do administratora.
+<br/>
+<br/>
+
+- [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors)
+<br/>
 
 ## Blind SQL injection with time delays
 ### Zadanie 3.1
@@ -165,17 +175,9 @@ W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwi
 </details>
 <br/>
 
-<br/>
 
-## Zadanie 2 - Blind SQL injection with conditional responses
-Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
-Rezultat zapytania nie jest zwracany, komunikaty błędu również nie są wyświetlane. Aplikacja zawiera jednak wiadomość "Welcome back", jeżeli zapytanie zwraca jakiś wiersz tabeli.
-Baza danych zawiera tabelę *users*, z kolumnami *nazwa użytkownika* oraz *hasło*. Zadanie polega na ustaleniu hasła do administratora.
-
-- [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses)
-<br/>
-
-## Zadanie 3 - Blind SQL injection with out-of-band interaction
+## Blind SQL injection with out-of-band interaction
+### Zadanie 4.1
 Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
 Zapytanie SQL jest wykonywane asynchronicznie i nie wpływa na odpowiedź aplikacji. Jednak da się spowodować interakcję z zewnętrzną domeną.
 Zadanie polega na wykorzystaniu podatności SQLi w celu spodowania DNS lookup dla burpcollaborator.net.
