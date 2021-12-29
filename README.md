@@ -87,7 +87,7 @@ Długość hasła jest identyczna co w poprzednim zadaniu
   <summary>Pierwsza podpowiedź</summary>
   <ol>
     <li>
-       W tym zadaniu napewno będziesz potrzebował Burp Intruder
+       W tym zadaniu także będziesz potrzebował Burp Intruder, oraz wystarczy zmienić treść zapytania SQL 
     </li>
   </ol>
 </details>
@@ -96,7 +96,7 @@ Długość hasła jest identyczna co w poprzednim zadaniu
   <summary>Druga podpowiedź</summary>
   <ol>
     <li>
-     W którymś miejscu żądania trzeba będzie dopisać pg_sleep(czas opóźnienia) 
+     Najpierw ustal z jakiej bazy danych korzysta aplikacja, a następnie skorzystaj z zapytania które pojawiło się na wykładzie
     </li>
   </ol>
 </details>
