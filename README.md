@@ -107,9 +107,9 @@ Długość hasła jest identyczna co w poprzednim zadaniu.
   <ol>
     <li>Z włączonym w tle Burpem wejdź na stronę sklepu </li>
     <li>Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
-    <li></li>
-    <li> Wyślij żądanie i poczekaj 10 s </li>
-    <li></li>
+    <li>Zacznijmy od określenia z jakiej bazy danych korzysta aplikacja.</li>
+    <li>Zmodyfikuj zapytanie „Cookie: TrackingId=jakaś_zawartość<b>' ||(SELECT '' FROM dual)||'</b>; session=jakaś_zawrtość”</li>
+    <li>Strona wysłała komunikat o błędzie, próbujemy dalej </li>
     <li></li>
     <li></li>
     <li></li>
