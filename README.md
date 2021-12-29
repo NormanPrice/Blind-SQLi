@@ -57,18 +57,15 @@ Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
     <li>Rozpocznij atak - długość hasła to liczba przy której nie pojawi się już komunikat <b>Welcome back</b></li>
     <li>Przejdź ponownie do zakładki Positions i zastąp wcześniej dodane zapytanie sql następującym <b>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='a</b></li>
     <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie.</li>
-    <li><Przejdź do zakładki Payloads w polu Payload type wybierz Simple list</li>
+    <li>Przejdź do zakładki Payloads w polu Payload type wybierz Simple list</li>
     <li>Poniżej w polu Payload Options dodaj plik do którego link umieszczony został w tym zadniu</li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>Jeśli wszytko się zgadza rozpocznij atak</li>
+    <li>Znak przy którym się pojawi komunikat<b>Welcome back</b> jest pierwszą literą hasła</li>
+    <li>Przejdź ponownie do zakładki Positions i w funkcji <b>SUBSTRING(password,1,1)</b> zamień pierwszą 1 na 2: <b>SUBSTRING(password,2,1)</b> </li>
+    <li>Rozpocznij ponownie atak </li>
+    <li>Znak przy którym się pojawi komunikat <b>Welcome back</b> jest drugąliterą hasła</li>
+    <li>Postępuj analogicznie inkrementując do warości będącej długością hasła</li>
+    <li>Jeśli masz już całe hasło zaloguj się na konto administratora używając loginu <b>administrator</b> i hasła które już posiadasz</li>
   </ol>
 </details>
 
