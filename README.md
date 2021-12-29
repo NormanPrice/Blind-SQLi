@@ -75,12 +75,42 @@ Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
 ## Blind SQL injection with conditional errors
 ### Zadanie 2.1 
 Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
-Rezultat zapytania nie jest zwracany, komunikaty błędu również nie są wyświetlane. Aplikacja zawiera jednak wiadomość "Welcome back", jeżeli zapytanie zwraca jakiś wiersz tabeli.
+Wyniki zapytania SQL nie są zwracane, aplikacja nie reaguje w żaden inny sposób w zależności od tego, czy zapytanie zwróci cokolwiek. Jeśli zapytanie SQL spowoduje błąd, wówczas aplikacja zwraca niestandardowy komunikat błędu.
 Baza danych zawiera tabelę *users*, z kolumnami *nazwa użytkownika* oraz *hasło*. Zadanie polega na ustaleniu hasła do administratora.
+Długość hasła jest identyczna co w poprzednim zadaniu
 <br/>
 <br/>
 
 - [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors)
+- [Lista znaków występujących w haśle](https://github.com/NormanPrice/Blind-SQLi/blob/main/litery)
+<details>
+  <summary>Pierwsza podpowiedź</summary>
+  <ol>
+    <li>
+       W tym zadaniu napewno będziesz potrzebował Burp Intruder
+    </li>
+  </ol>
+</details>
+
+<details>
+  <summary>Druga podpowiedź</summary>
+  <ol>
+    <li>
+     W którymś miejscu żądania trzeba będzie dopisać pg_sleep(czas opóźnienia) 
+    </li>
+  </ol>
+</details>
+
+<details>
+  <summary>Krok po kroku</summary>
+  <ol>
+    <li> Z włączonym w tle Burpem wejdź na stronę sklepu  </li>
+    <li> Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
+    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>’ ||pg_sleep(10)--</b>; session=jakaś_zawrtość” </li>
+    <li> Wyślij żądanie i poczekaj 10 s </li>
+  </ol>
+</details>
+<br/>
 <br/>
 
 ## Blind SQL injection with time delays
