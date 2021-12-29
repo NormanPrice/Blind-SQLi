@@ -109,7 +109,7 @@ Długość hasła jest identyczna co w poprzednim zadaniu.
     <li>Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
     <li>Zacznijmy od określenia z jakiej bazy danych korzysta aplikacja.</li>
     <li>Zmodyfikuj zapytanie „Cookie: TrackingId=jakaś_zawartość<b>' ||(SELECT '' FROM dual)||'</b>; session=jakaś_zawrtość”</li>
-    <li>Strona wysłała komunikat o błędzie, próbujemy dalej </li>
+    <li>Strona wysłała komunikat o błędzie, próbujemy dalej zamień teraz zapytnie SQL na <b>' ||(SELECT '' FROM dual)||'</b></li>
     <li></li>
     <li></li>
     <li></li>
