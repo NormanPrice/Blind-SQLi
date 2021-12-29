@@ -3,8 +3,9 @@ Poniższe zadania mają na celu przedstawić temat podatnosći Blind SQL injecti
 
 <br/>
 
-Przed rozpoczęciem pracy z laboratoriami należy zarejestrować się i zalogować w serwisie [Portswigger](https://portswigger.net/).
+Przed rozpoczęciem pracy z laboratoriami należy zarejestrować się lub zalogować w serwisie [Portswigger](https://portswigger.net/).
 Przydatne mogą okazać się również [payload'y](https://portswigger.net/web-security/sql-injection/cheat-sheet).
+A także należy zainstalować [Burp Suite](https://portswigger.net/burp/communitydownload). 
 <br/><br/>
 
 ---
