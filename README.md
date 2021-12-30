@@ -24,7 +24,7 @@ Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
   <summary>Pierwsza podpowiedź</summary>
   <ol>
     <li>
-       W tym zadaniu napewno będziesz potrzebował Burp Intruder.
+       W tym zadaniu na pewno będziesz potrzebował Burp Intruder.
     </li>
   </ol>
 </details>
@@ -33,10 +33,10 @@ Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
   <summary>Druga podpowiedź</summary>
   <ol>
     <li>
-      Na początek trzeba będzie zbadać długość hasła(użyj funkcji  LENGTH()), 
+      Na początek trzeba będzie zbadać długość hasła (użyj funkcji  LENGTH()), 
     </li>
     <li>
-      Znając długość hasła można badać badać kolejne litery hasła(użyj funkcji SUBSTRING()).
+      Znając długość hasła można badać kolejne litery hasła (użyj funkcji SUBSTRING()).
     </li>
   </ol>
 </details>
@@ -50,23 +50,23 @@ Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
     <li>Zmodyfiikuj jedną "1" na dowolny inny znak - sprawdź czy strona reaguje prawidłowa</li>
     <li>Wyślij zapytanie, nad którym pracujesz, do Burp Intrudera</li>
     <li>W zakładce Positions programu Burp Intruder wyczyść domyślne pozycje klikając na przycisk "Clear §".</li>
-    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</b>; session=jakaś_zawrtość” </li>
+    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH (password)>1)='a</b>; session=jakaś_zawrtość” </li>
     <li>Umieść znacznik "Add §"  wokół znaku '1' w wartości cookie. </li>
     <li>Przejdź do zakładki Payloads w polu Payload type wybierz Numbers</li>
     <li>Poniżej w polu Payload Options wybierz zakres od 1 do 30 i krok 1</li>
     <li>Następnie przejdź do zakładki Options i w polu Grep-Match naciśnij Clear, potem wpisz    <b>Welcome back</b> i kliknij Add </li>
     <li>Rozpocznij atak - długość hasła to liczba przy której nie pojawi się już komunikat <b>Welcome back</b></li>
-    <li>Przejdź ponownie do zakładki Positions i zastąp wcześniej dodane zapytanie sql następującym <b>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='a</b>
+    <li>Przejdź ponownie do zakładki Positions i zastąp wcześniej dodane zapytanie SQL następującym <b>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='a</b>
       <br/>
     Wykorzystuje to funkcję SUBSTRING() do wyodrębnienia pojedynczego znaku z hasła i przetestowania go względem określonej wartości. Nasz atak będzie cyklicznie przechodził przez każdą pozycję i możliwą wartość, testując każdą z nich po kolei.</li>
     <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie.</li>
     <li>Przejdź do zakładki Payloads w polu Payload type wybierz Simple list</li>
-    <li>Poniżej w polu Payload Options dodaj plik do którego link umieszczony został w tym zadniu</li>
+    <li>Poniżej w polu Payload Options dodaj plik do którego link umieszczony został w tym zadaniu</li>
     <li>Jeśli wszytko się zgadza rozpocznij atak</li>
-    <li>Znak przy którym się pojawi komunikat<b>Welcome back</b> jest pierwszą literą hasła</li>
+    <li>Znak przy którym się pojawi komunikat <b>Welcome back</b> jest pierwszą literą hasła</li>
     <li>Przejdź ponownie do zakładki Positions i w funkcji <b>SUBSTRING(password,1,1)</b> zamień pierwszą 1 na 2: <b>SUBSTRING(password,2,1)</b> </li>
     <li>Rozpocznij ponownie atak </li>
-    <li>Znak przy którym się pojawi komunikat <b>Welcome back</b> jest drugąliterą hasła</li>
+    <li>Znak przy którym się pojawi komunikat <b>Welcome back</b> jest drugą literą hasła</li>
     <li>Postępuj analogicznie inkrementując do warości będącej długością hasła</li>
     <li>Jeśli masz już całe hasło zaloguj się na konto administratora używając loginu <b>administrator</b> i hasła które już posiadasz</li>
   </ol>
