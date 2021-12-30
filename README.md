@@ -133,7 +133,7 @@ Długość hasła jest identyczna co w poprzednim zadaniu.
 ### Zadanie 3.1
 Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
 Jednak wyniki zapytania SQL nie są zwracane, a także aplikacja zachowuje się cały czas tak samo- niezależnie od tego co dane zapytanie SQL zwraca. Możliwe jest jednak spowodowanie opóźnienia, dzięki któremu można wnioskować pewne informacje.
-Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowego opóźnienia.
+Zadanie polega na wykorzystaniu podatności SQLi w celu spowodowania 10 sekundowego opóźnienia.
 <br/>
 <br/>
 
@@ -142,7 +142,7 @@ Zadanie polega na wykorzystaniu podatnosci SQLi w celu spowodowania 10 sekundowe
   <summary>Pierwsza podpowiedź</summary>
   <ol>
     <li>
-       W tym zadaniu napewno będziesz potrzebował Burp Intruder
+       W tym zadaniu na pewno będziesz potrzebował Burp Intruder
     </li>
   </ol>
 </details>
@@ -183,7 +183,7 @@ W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwi
   <summary>Pierwsza podpowiedź</summary>
   <ol>
     <li>
-       W tym zadaniu napewno będziesz potrzebował Burp Intruder, i należy dopisać zapytanie sql w tym samym miesjcu co w poprzednim zadaniu 
+       W tym zadaniu na pewno będziesz potrzebował Burp Intruder, i należy dopisać zapytanie SQL w tym samym miejscu co w poprzednim zadaniu 
     </li>
   </ol>
 </details>
@@ -202,10 +202,10 @@ W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwi
   <ol>
     <li> Z włączonym w tle Burpem wejdź na stronę sklepu  </li>
     <li> Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
-    <li> Najpierw sprawdźmy czy użytkownik "administrator" istnieje wklejając poniższą linijkę w tą samo mijesce co w poprzednim zadaniu
+    <li> Najpierw sprawdźmy czy użytkownik "administrator" istnieje wklejając poniższą linijkę w tą samo miejsce co w poprzednim zadaniu
       <br/>
     ' %3BSELECT+CASE+WHEN+(username='administrator')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--</li>
-    <li>Jeśli storna odpowiada po dłuższym czasie (10s) znaczy to że użytkownik istnieje</li>
+    <li>Jeśli strona odpowiada po dłuższym czasie (10s) znaczy to że użytkownik istnieje</li>
     <li>Zamień teraz nazwę użytkownika "administrator" i zauważ że strona odpowiada natychmiastowo</li>
     <li>Demonstruje to, jak można przetestować pojedynczy warunek i wywnioskować wynik.</li>
     <li>Wyślij zapytanie, nad którym pracujesz, do Burp Intrudera</li>
@@ -214,24 +214,14 @@ W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwi
     <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie.</li>
     <li>Przejdź do zakładki Payloads, sprawdź czy wybrana jest opcja "Simple list", a następnie w zakładce "Payload Options" dodaj znaki z pliku do którego link znajduję się w tym zadaniu (plik identyczny co w poprzednich zadaniach)</li>
     <li>Aby móc stwierdzić, kiedy właściwy znak został wysłany, będziesz musiał monitorować czas potrzebny aplikacji na odpowiedź na każde żądanie. Aby proces ten był jak najbardziej niezawodny, musisz skonfigurować atak Intrudera tak, aby wysyłał żądania w pojedynczym wątku. Aby to zrobić, przejdź do zakładki Resource Pool i dodaj atak do puli zasobów (na dole strony) z ustawionym parametrem "Maximum concurrent requests" na 1.</li>
-    <li>Rozpocznij atak obserwując wyraźnie zauważalne opóźnienie w przypadku jedego znaku - zanotuj go </li>
-    <li>Poczas sprawdzania kolejnych liter na górze pojawiło się menu <b>Columns</b> zaznacz w nim <b>Response received</b> - ułatwi to w znacznym stopniu pracę </li>
+    <li>Rozpocznij atak obserwując wyraźnie zauważalne opóźnienie w przypadku jednego znaku - zanotuj go </li>
+    <li>Podczas sprawdzania kolejnych liter na górze pojawiło się menu <b>Columns</b> zaznacz w nim <b>Response received</b> - ułatwi to w znacznym stopniu pracę </li>
     <li>Opóźnienie rzędu 10000 i powyżej oznacza że tego znaku oczekujemy.</li>
-    <li>Po zakończeniu pierwszej rundy przejdź do zakładni Positions i zmień argument funkcji "Subsrting" z 1 na 2 SUBSTRING(password,<b>2</b>,1)</li>
-    <li>Postępuj anologicznie inkrementując wartość do 20</li>
+    <li>Po zakończeniu pierwszej rundy przejdź do zakładki Positions i zmień argument funkcji "Subsrting" z 1 na 2 SUBSTRING(password,<b>2</b>,1)</li>
+    <li>Postępuj analogicznie inkrementując wartość do 20</li>
   <li>Zaloguj się na konto administratora używając loginu <b>administrator</b> i hasła które już znasz</li>
   </ol>
 </details>
 <br/>
 
-
-## Blind SQL injection with out-of-band interaction
-### Zadanie 4.1
-Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawierające wartość przesłanego ciasteczka. 
-Zapytanie SQL jest wykonywane asynchronicznie i nie wpływa na odpowiedź aplikacji. Jednak da się spowodować interakcję z zewnętrzną domeną.
-Zadanie polega na wykorzystaniu podatności SQLi w celu spodowania DNS lookup dla burpcollaborator.net.
-
-- [Zadanie](https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band)
-
-<br/>
 
