@@ -56,7 +56,9 @@ Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
     <li>Poniżej w polu Payload Options wybierz zakres od 1 do 30 i krok 1</li>
     <li>Następnie przejdź do zakładki Options i w polu Grep-Match naciśnij Clear, potem wpisz    <b>Welcome back</b> i kliknij Add </li>
     <li>Rozpocznij atak - długość hasła to liczba przy której nie pojawi się już komunikat <b>Welcome back</b></li>
-    <li>Przejdź ponownie do zakładki Positions i zastąp wcześniej dodane zapytanie sql następującym <b>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='a</b></li>
+    <li>Przejdź ponownie do zakładki Positions i zastąp wcześniej dodane zapytanie sql następującym <b>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='a</b>
+      <br/>
+    Wykorzystuje to funkcję SUBSTRING() do wyodrębnienia pojedynczego znaku z hasła i przetestowania go względem określonej wartości. Nasz atak będzie cyklicznie przechodził przez każdą pozycję i możliwą wartość, testując każdą z nich po kolei.</li>
     <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie.</li>
     <li>Przejdź do zakładki Payloads w polu Payload type wybierz Simple list</li>
     <li>Poniżej w polu Payload Options dodaj plik do którego link umieszczony został w tym zadniu</li>
@@ -203,12 +205,12 @@ W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwi
     <li> Najpierw sprawdźmy czy użytkownik "administrator" istnieje wklejając poniższą linijkę w tą samo mijesce co w poprzednim zadaniu
       <br/>
     ' %3BSELECT+CASE+WHEN+(username='administrator')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--</li>
-    <li>Jeśli storna odpowiada po dłuższym czasie (10s) znaczy to że użytkownik istnieje </li>
+    <li>Jeśli storna odpowiada po dłuższym czasie (10s) znaczy to że użytkownik istnieje</li>
+    <li>Zamień teraz nazwę użytkownika "administrator" i zauważ że strona odpowiada natychmiastowo</li>
+    <li>Demonstruje to, jak można przetestować pojedynczy warunek i wywnioskować wynik.</li>
     <li>Wyślij zapytanie, nad którym pracujesz, do Burp Intrudera</li>
     <li>W zakładce Positions programu Burp Intruder wyczyść domyślne pozycje klikając na przycisk "Clear §".</li>
-    <li>Zmień wartość cookie na: TrackingId=x'%3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,1,1)='a')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--
-    </br>
-      Wykorzystuje to funkcję SUBSTRING() do wyodrębnienia pojedynczego znaku z hasła i przetestowania go względem określonej wartości. Nasz atak będzie cyklicznie przechodził przez każdą pozycję i możliwą wartość, testując każdą z nich po kolei.
+    <li>Zmień wartość cookie na: TrackingId=x'%3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,1,1)='a')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--</br></li>
     <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie.</li>
     <li>Przejdź do zakładki Payloads, sprawdź czy wybrana jest opcja "Simple list", a następnie w zakładce "Payload Options" dodaj znaki z pliku do którego link znajduję się w tym zadaniu</li>
     <li>Aby móc stwierdzić, kiedy właściwy znak został wysłany, będziesz musiał monitorować czas potrzebny aplikacji na odpowiedź na każde żądanie. Aby proces ten był jak najbardziej niezawodny, musisz skonfigurować atak Intrudera tak, aby wysyłał żądania w pojedynczym wątku. Aby to zrobić, przejdź do zakładki Resource Pool i dodaj atak do puli zasobów (na dole strony) z ustawionym parametrem "Maximum concurrent requests" na 1.</li>
