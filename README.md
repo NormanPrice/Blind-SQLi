@@ -108,17 +108,20 @@ Długość hasła jest identyczna co w poprzednim zadaniu.
     <li>Z włączonym w tle Burpem wejdź na stronę sklepu </li>
     <li>Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
     <li>Zacznijmy od określenia z jakiej bazy danych korzysta aplikacja.</li>
-    <li>Zmodyfikuj zapytanie „Cookie: TrackingId=jakaś_zawartość<b>' ||(SELECT '' FROM dual)||'</b>; session=jakaś_zawrtość”</li>
+    <li>Zmodyfikuj zapytanie „Cookie: TrackingId=jakaś_zawartość<b>' ||(SELECT '')||'</b>; session=jakaś_zawrtość”</li>
     <li>Strona wysłała komunikat o błędzie, próbujemy dalej zamień teraz zapytnie SQL na <b>' ||(SELECT '' FROM dual)||'</b></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>Ponieważ nie otrzymałeś już błędu, wskazuje to, że używana jest  baza danych Oracle, (wymaga, aby wszystkie instrukcje SELECT zawierały nazwę tabeli.)</li>
+    <li>Wyślij zapytanie, nad którym pracujesz, do Burp Intrudera</li>
+    <li>W zakładce Positions programu Burp Intruder wyczyść domyślne pozycje klikając na przycisk "Clear §".</li>
+    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>' ||(SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'</b>; session=jakaś_zawrtość” </li>
+    <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie. </li>
+    <li>Przejdź do zakładki Payloads w polu Payload type wybierz Simple list</li>
+    <li>Poniżej w polu Payload Options dodaj listę znaków występujących w haślę </li>
+    <li>Rozpocznij atak - obserwuj kody błedu></li>
+    <li>Przejdź ponownie do zakładki Positions i w funkcji <b>SUBSTRING(password,1,1)</b> zamień pierwszą 1 na 2: <b>SUBSTRING(password,2,1)</b> </li>
+    <li>Rozpocznij ponownie atak </li>
+    <li>Postępuj analogicznie inkrementując do warości będącej długością hasła</li>
+    <li>Jeśli masz już całe hasło zaloguj się na konto administratora używając loginu <b>administrator</b> i hasła które już posiadasz</li>
   </ol>
 </details>
 <br/>
