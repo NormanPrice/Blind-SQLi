@@ -117,7 +117,7 @@ Długość hasła jest identyczna co w poprzednim zadaniu.
     <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie. </li>
     <li>Przejdź do zakładki Payloads w polu Payload type wybierz Simple list</li>
     <li>Poniżej w polu Payload Options dodaj listę znaków występujących w haślę </li>
-    <li>Rozpocznij atak - obserwuj kody błedu></li>
+    <li>Rozpocznij atak - obserwuj kody błedu</li>
     <li>Przejdź ponownie do zakładki Positions i w funkcji <b>SUBSTRING(password,1,1)</b> zamień pierwszą 1 na 2: <b>SUBSTRING(password,2,1)</b> </li>
     <li>Rozpocznij ponownie atak </li>
     <li>Postępuj analogicznie inkrementując do warości będącej długością hasła</li>
@@ -171,7 +171,7 @@ Aplikacja używa śledzenia ciasteczek do analizy i wykonuje zapytanie SQL zawie
 Jednak wyniki zapytania SQL nie są zwracane, a także aplikacja zachowuje się cały czas tak samo- niezależnie od tego co dane zapytanie SQL zwraca. Możliwe jest jednak spowodowanie opóźnienia, dzięki któremu można wnioskować pewne informacje.
 Baza danych zawiera tabelę o nazwie <b>users</b>, z kolumnami o nazwach <b>username</b> i <b>password</b>. 
 <br/>
-W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwienia zadania jego hasło zawiera 20 znaków
+W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwienia zadania jego hasło składa się z takiej samej ilości znaków co poprzednie hasła.
 <br/>
 <br/>
 
