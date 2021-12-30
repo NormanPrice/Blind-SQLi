@@ -210,11 +210,13 @@ W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwi
     <li>Demonstruje to, jak można przetestować pojedynczy warunek i wywnioskować wynik.</li>
     <li>Wyślij zapytanie, nad którym pracujesz, do Burp Intrudera</li>
     <li>W zakładce Positions programu Burp Intruder wyczyść domyślne pozycje klikając na przycisk "Clear §".</li>
-    <li>Zmień wartość cookie na: TrackingId=x'%3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,1,1)='a')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--</br></li>
+    <li>Zmień wartość cookie na: TrackingId=x' %3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,1,1)='a')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--</br></li>
     <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie.</li>
-    <li>Przejdź do zakładki Payloads, sprawdź czy wybrana jest opcja "Simple list", a następnie w zakładce "Payload Options" dodaj znaki z pliku do którego link znajduję się w tym zadaniu</li>
+    <li>Przejdź do zakładki Payloads, sprawdź czy wybrana jest opcja "Simple list", a następnie w zakładce "Payload Options" dodaj znaki z pliku do którego link znajduję się w tym zadaniu (plik identyczny co w poprzednich zadaniach)</li>
     <li>Aby móc stwierdzić, kiedy właściwy znak został wysłany, będziesz musiał monitorować czas potrzebny aplikacji na odpowiedź na każde żądanie. Aby proces ten był jak najbardziej niezawodny, musisz skonfigurować atak Intrudera tak, aby wysyłał żądania w pojedynczym wątku. Aby to zrobić, przejdź do zakładki Resource Pool i dodaj atak do puli zasobów (na dole strony) z ustawionym parametrem "Maximum concurrent requests" na 1.</li>
     <li>Rozpocznij atak obserwując wyraźnie zauważalne opóźnienie w przypadku jedego znaku - zanotuj go </li>
+    <li>Poczas sprawdzania kolejnych liter na górze pojawiło się menu <b>Columns</b> zaznacz w nim <b>Response received</b> - ułatwi to w znacznym stopniu pracę </li>
+    <li>Opóźnienie rzędu 10000 i powyżej oznacza że tego znaku oczekujemy.</li>
     <li>Po zakończeniu pierwszej rundy przejdź do zakładni Positions i zmień argument funkcji "Subsrting" z 1 na 2 SUBSTRING(password,<b>2</b>,1)</li>
     <li>Postępuj anologicznie inkrementując wartość do 20</li>
   <li>Zaloguj się na konto administratora używając loginu <b>administrator</b> i hasła które już znasz</li>
