@@ -33,6 +33,9 @@ Aby rozwiązać zadanie, zaloguj się jako użytkownik **administrator**.
   <summary>Druga podpowiedź</summary>
   <ol>
     <li>
+    W 3 linijce żądania (metoda GET) znajdują się informację na temat ciasteczek, po zawrtości "Tracking ID" można próbować tworzyć zapytania sql
+    </li>
+    <li>
       Na początek trzeba będzie zbadać długość hasła (użyj funkcji  LENGTH()), 
     </li>
     <li>
@@ -59,7 +62,7 @@ Długość hasła jest identyczna co w poprzednim zadaniu.
   <summary>Pierwsza podpowiedź</summary>
   <ol>
     <li>
-       W tym zadaniu także będziesz potrzebował Burp Intruder, oraz wystarczy zmienić treść zapytania SQL 
+       W tym zadaniu także będziesz potrzebował Burp Intruder, oraz wystarczy zmienić treść zapytania SQL w tym samym miejscu co poprzednio
     </li>
   </ol>
 </details>
